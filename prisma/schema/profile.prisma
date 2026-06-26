@@ -1,6 +1,6 @@
 model Profile{
     id String @id @default(uuid())
-    profile String? 
+    profilePhoto String? 
     bio String? 
     userId String @unique
     user User @relation(fields: [userId], references: [id])

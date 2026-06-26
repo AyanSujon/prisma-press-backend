@@ -7,7 +7,7 @@ CREATE TYPE "Role" AS ENUM ('USER', 'AUTHOR', 'ADMIN');
 -- CreateTable
 CREATE TABLE "profiles" (
     "id" TEXT NOT NULL,
-    "profile" TEXT,
+    "profilePhoto" TEXT,
     "bio" TEXT,
     "userId" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
