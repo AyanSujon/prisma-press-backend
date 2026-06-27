@@ -3,6 +3,7 @@ import HttpStatus from "http-status";
 import { userService } from "./user.service";
 
 const registerUser = async(req: Request, res: Response)=>{
+    try{
     const payload = req.body;
     const user = await userService.registerUserIntoDB(payload);
     
@@ -14,6 +15,16 @@ const registerUser = async(req: Request, res: Response)=>{
             user
         }
     })
+
+    }catch (error){
+        console.log(error);
+        res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+        success: false,
+        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
+        message: "failed to register user",
+        error: (error as Error).message
+    })       
+    }
 }
 
 
