@@ -3,6 +3,8 @@ import HttpStatus from "http-status";
 import { userService } from "./user.service";
 import { NextFunction } from "express-serve-static-core";
 import { catchAsync } from "../../utils/catchAsync";
+import { sendResponse } from "../../utils/sendResponse";
+
 
 
 
@@ -37,13 +39,20 @@ const registerUser = catchAsync(async(req: Request, res: Response, next: NextFun
         const payload = req.body;
         const user = await userService.registerUserIntoDB(payload);
 
-        res.status(HttpStatus.CREATED).json({
+        // res.status(HttpStatus.CREATED).json({
+        //     success: true,
+        //     statusCode: HttpStatus.CREATED,
+        //     message: "user Registered Successfully.",
+        //     data: {
+        //         user
+        //     }
+        // })
+
+        sendResponse(res, {
             success: true,
             statusCode: HttpStatus.CREATED,
             message: "user Registered Successfully.",
-            data: {
-                user
-            }
+            data: { user}
         })
 })
 
